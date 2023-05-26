@@ -1,0 +1,14 @@
+//Program to check if number is odd or even
+
+let 
+odd_even(n) = 
+	not (Isinteger n) -> 
+		'Error - Enter integer' |
+	(n / 2) * 2 eq n -> 
+		'Even' | 
+		'Odd'
+
+in 
+
+Print(odd_even(101))
+

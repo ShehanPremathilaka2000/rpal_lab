@@ -1,0 +1,15 @@
+//Program to find factorial of a given number
+
+let 
+rec factorial(n) = 
+	not (Isinteger n) ->
+		'Error - Enter an integer for n' |
+	n ls 0 ->
+		'Can not find factorial value for negative values' |
+	n ls 2 -> 
+		1 | 
+		n * factorial(n-1)
+
+in 
+
+Print(factorial(5))

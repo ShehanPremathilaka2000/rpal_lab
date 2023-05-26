@@ -1,0 +1,27 @@
+// Program to print Fibonacci series in a given range
+// When gives the start and the end numbers give the tuple of Fibonacci numbers belongs to that range.
+
+let 
+fib(start, end) = 
+	not (Isinteger start) ->
+		'Error - start should ba an integer' |
+	not (Isinteger end) ->
+		'Error - end should be an integer' |
+	fib_cal(0, 1, start, end, nil) 
+
+where
+		
+rec fib_cal(prev, curr, start, end, t) =                               //This calculate the fibonarchi numbers from start
+	start eq 0 ->                                                    //If start number is 0,  then add 0 to the tuple
+		fib_cal(prev, curr, 1, end, (t aug 0)) |
+	curr ls start ->                                                 //If crrent numbr is not in the range don't add to the tuple
+		fib_cal(curr, curr + prev, start, end, t) | 
+	curr le end ->                                                   //If number is in the range add ot to the tuple.
+		fib_cal(curr, curr + prev, start, end, (t aug curr))  |
+		t                                                          //return the tuple.
+
+in 
+
+Print(fib(0, 10))
+
+

@@ -1,0 +1,18 @@
+//Program to check whether the given number is positive or negative
+	//If number is positive then return Positive. 
+	//If number is zero then return Zero. 
+	//If number is negative return Negative.
+
+let 
+check(x) = 
+	not (Isinteger x) ->
+		'Error - Enter an integer' |
+	x eq 0 -> 
+		'Zero' | 
+	x ls 0 -> 
+		'Negative' | 
+		'Positive' 
+
+in 
+
+Print(check(-5))

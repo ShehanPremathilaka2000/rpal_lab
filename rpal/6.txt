@@ -1,0 +1,52 @@
+//Program to display palindrome numbers in a given range
+//When give start and end, go through all the integers in that range and check each palindrome or not.If palindrome, then add to the tuple. Usr function in q5 to check wheter palinfrome or not..
+
+//calculate the length of number
+let 
+rec len(x) = 
+	x ls 10 -> 
+		1 | 
+		1 + len(x / 10) 
+
+in 
+
+let 
+is_pal(x) = 
+	x ls 0 ->                          //if x is negative not palinfrome
+		0 |
+	x ls 10 ->                         //if x is less than 10 and positive a palindrome
+		1 |
+	pal(x, len(x)) 
+
+where
+
+//if palindrome return 1. else return 0	
+rec pal(x, l) = 
+	x ls 10 -> 
+		1 |
+	x - (x / 10) * 10 eq x / (10 ** (l - 1)) -> 
+		pal((x - (x / (10 ** (l - 1)) * 10 ** (l - 1))) / 10, l - 2) |
+		0
+
+in 
+
+let 
+rec pal_range(start, end) = 
+	not (Isinteger start) ->                  //if x is not a number error
+		'Error - Enter integer for start' |
+	not (Isinteger end) ->               	//if x is not a number error
+		'Error - Enter integer for end' |
+	count(start, end, nil) 
+
+where 
+	
+rec count(start, end, t) = 
+	start le end -> 
+		(is_pal(start) eq 1 -> 
+			count(start + 1, end, (t aug start)) |   //if start is palindrome add to the tuple
+			count(start + 1, end, t)) |
+		t
+
+in 
+
+Print(pal_range(-30,200))

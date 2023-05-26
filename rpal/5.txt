@@ -1,0 +1,34 @@
+// Program to check if given number is palindrome or not
+// Check first adn last digit of the number are equal or not.
+
+//calculate the length of the number
+let 
+rec len(x) = 
+	x ls 10 -> 
+		1 | 
+		1 + len(x / 10) 
+
+in 
+
+let 
+is_pal(x) = 
+	not (Isinteger x) ->               //if x is not a number error
+		'Error - Enter integer' |
+	x ls 0 ->                          //if x is negative not palinfrome
+		'False' |
+	x ls 10 ->                         //if x is less than 10 and positive a palindrome
+		'True' |
+	pal(x, len(x)) 
+
+where
+
+rec pal(x, l) =                                                                     //check the given number is palindrome or not
+	x ls 10 ->                                                                    //if number less than 10, it's palindrome
+		'True' |
+	x - (x / 10) * 10 eq x / (10 ** (l - 1)) ->                                   //[x - (x / 10) * 10] gives the last digit and [x / (10 ** (p - 1))] gives the first digit
+		pal((x - (x / (10 ** (l - 1)) * 10 ** (l - 1))) / 10, l - 2) |          //[x - (x / (10 ** (l - 1)) * 10 ** (l - 1))) / 10] gives the new number after removeing first and after digits.
+		'False'
+
+in 
+
+Print(is_pal(224422))

@@ -1,0 +1,25 @@
+// Program to find greatest of three numbers
+// Find the maximum number of third number and the maximum number of first two numbers.
+
+let 
+greatest(x, y, z) =
+	not (Isinteger x) ->
+		'Error - Enter an integer for x' |
+	not (Isinteger y) ->
+		'Error - Enter an integer for Y' |
+	not (Isinteger z) ->
+		'Error - Enter an integer for Z' | 
+	max(max(x, y), z) 
+
+where 
+
+rec max(a,b) = 
+	a ls b -> 
+		b | 
+		a 
+
+in 
+
+Print(greatest(-10, 20, 3))
+
+
